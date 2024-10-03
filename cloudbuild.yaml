@@ -1,0 +1,16 @@
+  options:
+    logging: CLOUD_LOGGING_ONLY
+    pool: {}
+  projectId: sohansm
+  steps:
+  - name: gcr.io/k8s-skaffold/pack
+    entrypoint: pack
+    args:
+    - build
+    - us-central1-docker.pkg.dev/sohansm-project/cloud-run-source-deploy/hello-node-fn
+    - --builder
+    - gcr.io/buildpacks/builder:latest
+    - --network
+    - cloudbuild
+  images:
+  - us-central1-docker.pkg.dev/sohansm-project/cloud-run-source-deploy/hello-node-fn
